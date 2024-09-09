@@ -15,7 +15,7 @@ def calculate_primes(limit):
 
 if __name__ == '__main__':
     arg_parser = argparse.ArgumentParser(
-        prog="python StressTestCPU.py",
+        prog="python benchmark_cpu.py",
         description=(
             "This program stresses the CPU by calculating all prime numbers up to a specified limit, "
             "the program can be configurated to repeat the function in different process to increase the stress."

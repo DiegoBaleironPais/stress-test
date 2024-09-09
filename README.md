@@ -12,8 +12,6 @@ This program checks for prime numbers by iterating sequentially from 1 to a give
 1. [Installation](#installation)
 2. [Usage](#usage)
 3. [Prerequisites](#prerequisites)
-4. [Contributing](#contributing)
-5. [License](#license)
 
 ## Installation
 
@@ -26,4 +24,14 @@ cd stress-tests
 
 ## Usage
 **CPU Stress**
-usage: python StressTestCPU.py [-h] [-c CORES] upper_limit
+usage: python StressTestCPU.py [-h] [-c CORES]
+
+**RAM Stress**
+usage: python benchmark_ram.py [-h] string_number seconds_alive
+
+## Prerequisites
+CPU test doesn´t use any non default library.
+
+RAM test needs numpy.
+
+pip install numpy

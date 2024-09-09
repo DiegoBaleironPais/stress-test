@@ -1,32 +1,24 @@
 import argparse
 import time
-import numpy as np
 
-def stress_memory(size_in_gb):
-    # Convert GB to bytes
-    size_in_bytes = size_in_gb * (1024 ** 3)
-    # Create a large array to consume the specified amount of memory
-    try:
-        large_array = np.zeros(size_in_bytes, dtype=np.uint8)
-        print(f"Allocated {size_in_gb} GB of memory.")
-        time.sleep(90)  # Keep the array in memory for 60 seconds to simulate stress
-    except MemoryError:
-        print(f"Failed to allocate {size_in_gb} GB of memory. Not enough RAM.")
+def stress_memory(string_number, seconds_alive):
+    string_garbage = []
+    for i in range(string_number):
+        string_garbage.append(' ' * 512000000) # Allocation of 512 MB size strings
+    time.sleep(seconds_alive)  # Keep the array in memory for x seconds to simulate stress
+ 
 
 if __name__ == '__main__':
     arg_parser = argparse.ArgumentParser(
-        prog="python StressTestMemory.py",
-        description=(
-            "This program stresses the memory by allocating a large array of a specified size in GB."
-        )
+        prog="python benchmark_ram.py",
+        description="This program stresses the RAM by creating multiple 512 MB strings. The user can specify how many strings to generate and how long the strings will be kept in memory, allowing them to control both the memory usage and the duration of the stress test."
     )
-    
-    arg_parser.add_argument('size', type=int, help="The amount of memory to allocate in GB.")
-    
+
+    arg_parser.add_argument('string_number', type=int, help="Number of 512 MB size strings that will be created")
+    arg_parser.add_argument('seconds_alive', type=int, help="Number of seconds that the strings will be stored")
+
+
     args = arg_parser.parse_args()
-    
-    start_time = time.time()
-    stress_memory(args.size)
-    end_time = time.time()
-    
-    print(f"Memory stress test completed in {end_time - start_time} seconds")
+
+    stress_memory(args.string_number, args.seconds_alive)
+
