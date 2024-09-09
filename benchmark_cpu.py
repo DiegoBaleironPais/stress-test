@@ -18,18 +18,18 @@ if __name__ == '__main__':
         prog="python StressTestCPU.py",
         description=(
             "This program stresses the CPU by calculating all prime numbers up to a specified limit, "
-            "the program can be configurated to repeat the function in different cores to increase the stress."
+            "the program can be configurated to repeat the function in different process to increase the stress."
         )
     )
     
     arg_parser.add_argument('upper_limit', type=int, help="The upper limit (inclusive) for the prime number search.")
-    arg_parser.add_argument('-c', '--cores', type=int, help="Number of process that will repeat the calculation", default=1)
+    arg_parser.add_argument('-c', '--process', type=int, help="Number of process that will repeat the calculation", default=1)
     
     args = arg_parser.parse_args()
     
     start_time = time.time()
 
-    process_args = [args.upper_limit] * args.cores
+    process_args = [args.upper_limit] * args.process
     #print("Process args -> ",process_args)
     with Pool(processes=4) as pool:
         pool.map(calculate_primes, process_args)
