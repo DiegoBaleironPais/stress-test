@@ -6,7 +6,12 @@ This repository contains two distinct programs:
 
 **benchmark_cpu.py:**
 
-This program checks for prime numbers by iterating sequentially from 1 to a given upper limit. It is highly CPU-intensive, as it performs no I/O operations and involves substantial calculations. The program also allows users to specify the number of processes that will run concurrently, enabling full utilization of all CPU cores and providing a robust CPU stress test.
+This program stresses the CPU by checking for prime numbers, iterating sequentially from 1 to a given upper limit. It is highly CPU-intensive as it performs no I/O operations, involving substantial calculations. Users can specify the number of processes to run concurrently, enabling full utilization of all CPU cores and providing a robust CPU stress test.
+
+**benchmark_ram.py:**
+
+This program stresses the RAM by creating multiple strings, each of size 512 MB. The user can specify the number of strings to generate, controlling the total memory consumed during the test. Additionally, the user can set how long these strings will remain in memory, allowing control over both memory usage and the duration of the test. This provides a flexible tool for simulating high memory load scenarios.
+
 
 ## Table of Contents
 1. [Installation](#installation)
